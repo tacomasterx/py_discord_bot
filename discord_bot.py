@@ -1,5 +1,6 @@
 import discord
 import os
+                # Variable de entorno para el id del canal/canales
 channel = int(os.environ['DISCORDCHANNELS'])
 
 from discord.ext import commands
@@ -41,4 +42,5 @@ async def factorial(ctx, base):
     #string = "La {}a potencia de {} es {}.".format(exponente,base,total)
     await bot.get_channel(channel).send("El factorial de {} es {}.".format(base,total))
 
+        # Variable de entorno para el token del bot
 bot.run(os.environ['TDBTOKEN'])
