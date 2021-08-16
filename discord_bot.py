@@ -1,6 +1,6 @@
 import discord
 import os
-                # Variable de entorno para el id del canal/canales
+              # Variable de entorno para el id del canal/canales
 channel = int(os.environ['DISCORDCHANNELS'])
 
 from discord.ext import commands
