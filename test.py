@@ -1,44 +1,10 @@
 import numpy as np
-# function: takes a simple linear equation as a string and returns
-#           the literal value
-def lineal(equation):
-    members = equation.split("=")
-    message = ""
-    if len(members) == 2 and members[1].isnumeric():
-        terms = []
-        buffer = ""
-        for i in range(len(members[0])):
-            if i == 0 and members[0][i] == '-':
-                buffer += members[0][i]
-                continue
-            if i != 0 and members[0][i] == '+' :
-                terms.append(int(buffer))
-                buffer = ""
-                continue
-            if i != 0 and members[0][i] == '-':
-                terms.append(int(buffer))
-                buffer = "-"
-                continue
-            if members[0][i].isnumeric() and i < len(members[0]) - 1:
-                buffer += members[0][i]
-                continue
-            if i == len(members[0]) - 1:
-                if members[0][i].isnumeric():
-                    buffer += members[0][i]
-                terms.append(int(buffer))
-                break
-
-        A = np.array(terms)
-        B = np.array([int(members[1])])
-        x = (( A[1] * -1 ) + B[0] )/ A[0]
-        message = "El valor de x es: " + str(x)
-    else:
-        message = "Arregla tu ecuación {} prro".format(equation)
-    return message
 
 
-def sistema(equation1, equation2):   
-    equations = [equation1,equation2]
+def sistema(*args):   
+    equations = []
+    for n in args:
+        equations.append(n)
     message = ""
     term_list = []
     member = []
@@ -87,9 +53,9 @@ def sistema(equation1, equation2):
     print(A)
     print(B)
     print(message)
-    print( -32 * (-0.81818182) + 15 * (-1.54545455))
-    print(  13 * (-0.81818182) - 25 * (-1.54545455))
+    print(-32 * (-0.2704918) + 15 * (0.25409836) - 3 * (3.1557377))
+    print(13 * (-0.2704918) - 25 * (0.25409836) + 12 * (3.1557377))
+    print(22 * (-0.2704918) + 11 * (0.25409836) + 1 * (3.1557377))
     
 
-print(lineal("-32x+15=3"))
-print(sistema("-32x+15y=3", "13x-25y=28"))
+print(sistema("-32x+15y-3z=3", "13x-25y+12z=28", "22x+11y+1z=0"))

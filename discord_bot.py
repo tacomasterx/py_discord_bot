@@ -81,8 +81,10 @@ async def lineal(ctx, equation):
 
 
 @bot.command()
-async def sistemal(ctx, equation1, equation2):
-    equations = [equation1, equation2]
+async def sistemal(ctx, *args):
+    equations = []
+    for n in args:
+        equations.append(n)
     message = ""
     term_list = []
     member = []
@@ -116,8 +118,7 @@ async def sistemal(ctx, equation1, equation2):
                     break
         else:
             message = "Arregla tu ecuación {} prro".format(j+1)
-            await bot.get_channel(channel).send(message)
-            return
+            return message
 
         term_list.append(terms)
 
