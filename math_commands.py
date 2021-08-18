@@ -1,28 +1,4 @@
-import discord
-import os
-import numpy as np
-
-from discord.ext import commands
-              # Variable de entorno para el id del canal/canales
-channel = int(os.environ['DISCORDCHANNELS'])
-
-bot = commands.Bot(command_prefix='!')
-
-@bot.command()
-async def hello(ctx):
-    await bot.get_channel(channel).send("Mensaje de prueba :3")
-
-@bot.command()
-async def algo(ctx):
-    await bot.get_channel(channel).send("Otra cosa")
-
-@bot.command()
-async def insulto(ctx):
-    await bot.get_channel(channel).send("Gorzed es puto!")
-
-@bot.command()
-async def texto(ctx, string):
-    await bot.get_channel(channel).send("No se que signifique \"" + string + "\"")
+import import_list
 
 @bot.command()
 async def potencia(ctx, base, exponente):
@@ -125,7 +101,3 @@ async def sistemal(ctx, *args):
     X = np.linalg.inv(A).dot(B)
     message = "Los valores de las incógnitas son: {}".format(X)
     await bot.get_channel(channel).send(message)
-
-
-       # Variable de entorno para el token del bot
-bot.run(os.environ['TDBTOKEN'])
